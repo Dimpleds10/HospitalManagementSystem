@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 
 import ui.Dashboard;
 
+
 public class Main extends Application {
 
     @Override
