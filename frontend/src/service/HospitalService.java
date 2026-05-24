@@ -19,8 +19,10 @@ import java.util.List;
 
 public class HospitalService {
 
+    // YOUR REAL RENDER BACKEND URL
+
     private static final String API_URL =
-            "http://localhost:8080/patients";
+            "https://hms-backend-d9yo.onrender.com/patients";
 
     // ADD PATIENT
 
@@ -44,6 +46,11 @@ public class HospitalService {
                     "application/json"
             );
 
+            conn.setRequestProperty(
+                    "Accept",
+                    "application/json"
+            );
+
             conn.setDoOutput(true);
 
             Gson gson =
@@ -55,7 +62,9 @@ public class HospitalService {
             OutputStream os =
                     conn.getOutputStream();
 
-            os.write(json.getBytes());
+            os.write(
+                    json.getBytes("utf-8")
+            );
 
             os.flush();
 
@@ -65,9 +74,26 @@ public class HospitalService {
                     conn.getResponseCode();
 
             System.out.println(
-                    "POST Response: "
+                    "POST Response Code: "
                             + responseCode
             );
+
+            BufferedReader br =
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    conn.getInputStream()
+                            )
+                    );
+
+            String line;
+
+            while ((line = br.readLine())
+                    != null) {
+
+                System.out.println(line);
+            }
+
+            br.close();
 
             conn.disconnect();
 
@@ -96,6 +122,19 @@ public class HospitalService {
 
             conn.setRequestMethod("GET");
 
+            conn.setRequestProperty(
+                    "Accept",
+                    "application/json"
+            );
+
+            int responseCode =
+                    conn.getResponseCode();
+
+            System.out.println(
+                    "GET Response Code: "
+                            + responseCode
+            );
+
             BufferedReader br =
                     new BufferedReader(
                             new InputStreamReader(
@@ -116,10 +155,14 @@ public class HospitalService {
 
             br.close();
 
+            System.out.println(
+                    response.toString()
+            );
+
             Gson gson =
                     new Gson();
 
-            // PARSE ROOT OBJECT
+            // FULL RESPONSE OBJECT
 
             JsonObject jsonObject =
                     gson.fromJson(
@@ -127,7 +170,7 @@ public class HospitalService {
                             JsonObject.class
                     );
 
-            // GET "data" ARRAY
+            // EXTRACT "data"
 
             JsonArray dataArray =
                     jsonObject.getAsJsonArray(
@@ -145,11 +188,7 @@ public class HospitalService {
                             patientListType
                     );
 
-            patients =
-                    FXCollections
-                            .observableArrayList(
-                                    patientList
-                            );
+            patients.addAll(patientList);
 
             conn.disconnect();
 
@@ -182,13 +221,35 @@ public class HospitalService {
 
             conn.setRequestMethod("PUT");
 
+            conn.setRequestProperty(
+                    "Accept",
+                    "application/json"
+            );
+
             int responseCode =
                     conn.getResponseCode();
 
             System.out.println(
-                    "PUT Response: "
+                    "PUT Response Code: "
                             + responseCode
             );
+
+            BufferedReader br =
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    conn.getInputStream()
+                            )
+                    );
+
+            String line;
+
+            while ((line = br.readLine())
+                    != null) {
+
+                System.out.println(line);
+            }
+
+            br.close();
 
             conn.disconnect();
 
@@ -196,59 +257,5 @@ public class HospitalService {
 
             e.printStackTrace();
         }
-    }
-
-    // TOTAL ROOMS
-
-    public static int getTotalRooms() {
-
-        return 50;
-    }
-
-    // OCCUPIED ROOMS
-
-    public static int getOccupiedRooms() {
-
-        int count = 0;
-
-        ObservableList<Patient> patients =
-                getPatients();
-
-        for (Patient p : patients) {
-
-            if (p.getStatus() != null
-                    && p.getStatus()
-                    .equals("Admitted")) {
-
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    // AVAILABLE ROOMS
-
-    public static int getAvailableRooms() {
-
-        return getTotalRooms()
-                - getOccupiedRooms();
-    }
-
-    // TOTAL REVENUE
-
-    public static double getTotalRevenue() {
-
-        double revenue = 0;
-
-        ObservableList<Patient> patients =
-                getPatients();
-
-        for (Patient p : patients) {
-
-            revenue += p.getFinalBill();
-        }
-
-        return revenue;
     }
 }

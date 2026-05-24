@@ -35,13 +35,17 @@ public class Dashboard extends BorderPane {
 
         // SIDEBAR
 
-        VBox sidebar = new VBox(15);
+        VBox sidebar =
+                new VBox(15);
 
-        sidebar.setPadding(new Insets(25));
+        sidebar.setPadding(
+                new Insets(25)
+        );
 
         sidebar.setPrefWidth(330);
 
-        sidebar.getStyleClass().add("sidebar");
+        sidebar.getStyleClass()
+                .add("sidebar");
 
         // TITLE
 
@@ -50,9 +54,10 @@ public class Dashboard extends BorderPane {
                         "Hospital Management"
                 );
 
-        title.getStyleClass().add("title");
+        title.getStyleClass()
+                .add("title");
 
-        // NAME
+        // INPUTS
 
         TextField nameField =
                 new TextField();
@@ -61,16 +66,12 @@ public class Dashboard extends BorderPane {
                 "Patient Name"
         );
 
-        // AGE
-
         TextField ageField =
                 new TextField();
 
         ageField.setPromptText(
                 "Patient Age"
         );
-
-        // GENDER
 
         ComboBox<String> genderBox =
                 new ComboBox<>();
@@ -84,8 +85,6 @@ public class Dashboard extends BorderPane {
         genderBox.setPromptText(
                 "Gender"
         );
-
-        // BLOOD GROUP
 
         ComboBox<String> bloodBox =
                 new ComboBox<>();
@@ -105,8 +104,6 @@ public class Dashboard extends BorderPane {
                 "Blood Group"
         );
 
-        // DISEASE
-
         ComboBox<String> diseaseBox =
                 new ComboBox<>();
 
@@ -121,8 +118,6 @@ public class Dashboard extends BorderPane {
                 "Disease"
         );
 
-        // ROOM TYPE
-
         ComboBox<String> roomTypeBox =
                 new ComboBox<>();
 
@@ -136,8 +131,6 @@ public class Dashboard extends BorderPane {
                 "Room Type"
         );
 
-        // SEARCH
-
         TextField searchField =
                 new TextField();
 
@@ -148,7 +141,9 @@ public class Dashboard extends BorderPane {
         // BUTTONS
 
         Button addButton =
-                new Button("Admit Patient");
+                new Button(
+                        "Admit Patient"
+                );
 
         Button dischargeButton =
                 new Button(
@@ -163,7 +158,7 @@ public class Dashboard extends BorderPane {
                 Double.MAX_VALUE
         );
 
-        // ANALYTICS LABELS
+        // ANALYTICS
 
         totalPatientsLabel =
                 new Label();
@@ -191,148 +186,141 @@ public class Dashboard extends BorderPane {
 
         table.setItems(patientList);
 
-        // PATIENT ID
+        // COLUMNS
 
-        TableColumn<Patient, String> patientIdCol =
-                new TableColumn<>("Patient ID");
+        TableColumn<Patient, String>
+                patientIdCol =
+                new TableColumn<>(
+                        "Patient ID"
+                );
 
-        patientIdCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getPatientId()
-                ));
+        patientIdCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getPatientId()
+                        )
+        );
 
-        // NAME
-
-        TableColumn<Patient, String> nameCol =
+        TableColumn<Patient, String>
+                nameCol =
                 new TableColumn<>("Name");
 
-        nameCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getName()
-                ));
+        nameCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getName()
+                        )
+        );
 
-        // AGE
-
-        TableColumn<Patient, Number> ageCol =
+        TableColumn<Patient, Number>
+                ageCol =
                 new TableColumn<>("Age");
 
-        ageCol.setCellValueFactory(data ->
-                new SimpleIntegerProperty(
-                        data.getValue()
-                                .getAge()
-                ));
+        ageCol.setCellValueFactory(
+                data ->
+                        new SimpleIntegerProperty(
+                                data.getValue()
+                                        .getAge()
+                        )
+        );
 
-        // GENDER
-
-        TableColumn<Patient, String> genderCol =
+        TableColumn<Patient, String>
+                genderCol =
                 new TableColumn<>("Gender");
 
-        genderCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getGender()
-                ));
+        genderCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getGender()
+                        )
+        );
 
-        // BLOOD GROUP
-
-        TableColumn<Patient, String> bloodCol =
+        TableColumn<Patient, String>
+                bloodCol =
                 new TableColumn<>("Blood");
 
-        bloodCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getBloodGroup()
-                ));
+        bloodCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getBloodGroup()
+                        )
+        );
 
-        // DISEASE
-
-        TableColumn<Patient, String> diseaseCol =
+        TableColumn<Patient, String>
+                diseaseCol =
                 new TableColumn<>("Disease");
 
-        diseaseCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getDisease()
-                ));
+        diseaseCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getDisease()
+                        )
+        );
 
-        // DOCTOR
-
-        TableColumn<Patient, String> doctorCol =
+        TableColumn<Patient, String>
+                doctorCol =
                 new TableColumn<>("Doctor");
 
-        doctorCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getDoctor()
-                ));
+        doctorCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getDoctor()
+                        )
+        );
 
-        // ROOM
-
-        TableColumn<Patient, Number> roomCol =
+        TableColumn<Patient, Number>
+                roomCol =
                 new TableColumn<>("Room");
 
-        roomCol.setCellValueFactory(data ->
-                new SimpleIntegerProperty(
-                        data.getValue()
-                                .getRoomNumber()
-                ));
+        roomCol.setCellValueFactory(
+                data ->
+                        new SimpleIntegerProperty(
+                                data.getValue()
+                                        .getRoomNumber()
+                        )
+        );
 
-        // ROOM TYPE
-
-        TableColumn<Patient, String> roomTypeCol =
+        TableColumn<Patient, String>
+                roomTypeCol =
                 new TableColumn<>("Room Type");
 
-        roomTypeCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getRoomType()
-                ));
+        roomTypeCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getRoomType()
+                        )
+        );
 
-        // BILL
-
-        TableColumn<Patient, Number> billCol =
+        TableColumn<Patient, Number>
+                billCol =
                 new TableColumn<>("Final Bill");
 
-        billCol.setCellValueFactory(data ->
-                new SimpleDoubleProperty(
-                        data.getValue()
-                                .getFinalBill()
-                ));
+        billCol.setCellValueFactory(
+                data ->
+                        new SimpleDoubleProperty(
+                                data.getValue()
+                                        .getFinalBill()
+                        )
+        );
 
-        // STATUS
-
-        TableColumn<Patient, String> statusCol =
+        TableColumn<Patient, String>
+                statusCol =
                 new TableColumn<>("Status");
 
-        statusCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getStatus()
-                ));
-
-        // ADMISSION DATE
-
-        TableColumn<Patient, String> admissionCol =
-                new TableColumn<>("Admission");
-
-        admissionCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getAdmissionDate()
-                ));
-
-        // DISCHARGE DATE
-
-        TableColumn<Patient, String> dischargeCol =
-                new TableColumn<>("Discharge");
-
-        dischargeCol.setCellValueFactory(data ->
-                new SimpleStringProperty(
-                        data.getValue()
-                                .getDischargeDate()
-                ));
+        statusCol.setCellValueFactory(
+                data ->
+                        new SimpleStringProperty(
+                                data.getValue()
+                                        .getStatus()
+                        )
+        );
 
         table.getColumns().addAll(
                 patientIdCol,
@@ -345,30 +333,14 @@ public class Dashboard extends BorderPane {
                 roomCol,
                 roomTypeCol,
                 billCol,
-                statusCol,
-                admissionCol,
-                dischargeCol
+                statusCol
         );
 
-        // ADMIT PATIENT
+        // ADD PATIENT
 
         addButton.setOnAction(e -> {
 
             try {
-
-                if (nameField.getText().isEmpty()
-                        || ageField.getText().isEmpty()
-                        || genderBox.getValue() == null
-                        || bloodBox.getValue() == null
-                        || diseaseBox.getValue() == null
-                        || roomTypeBox.getValue() == null) {
-
-                    showAlert(
-                            "Please fill all fields"
-                    );
-
-                    return;
-                }
 
                 Patient patient =
                         new Patient();
@@ -408,9 +380,7 @@ public class Dashboard extends BorderPane {
                 int room =
                         generateRoom();
 
-                patient.setRoomNumber(
-                        room
-                );
+                patient.setRoomNumber(room);
 
                 occupiedRooms.add(room);
 
@@ -433,23 +403,34 @@ public class Dashboard extends BorderPane {
                                 .toString()
                 );
 
-                patient.setDischargeDate(
-                        "-"
+                patient.setDischargeDate("-");
+
+                // SEND TO CLOUD BACKEND
+
+                HospitalService.addPatient(
+                        patient
                 );
 
-                HospitalService
-                        .addPatient(patient);
+                // WAIT FOR RENDER
 
-                patientList.clear();
+                Thread.sleep(2500);
 
-                patientList.addAll(
+                // REFRESH TABLE
+
+                ObservableList<Patient>
+                        refreshedPatients =
                         HospitalService
-                                .getPatients()
+                                .getPatients();
+
+                table.setItems(
+                        refreshedPatients
                 );
 
                 updateDashboard(
-                        patientList
+                        refreshedPatients
                 );
+
+                // CLEAR INPUTS
 
                 clearFields(
                         nameField,
@@ -460,15 +441,21 @@ public class Dashboard extends BorderPane {
                         roomTypeBox
                 );
 
+                System.out.println(
+                        "Patient Added Successfully"
+                );
+
             } catch (Exception ex) {
 
+                ex.printStackTrace();
+
                 showAlert(
-                        "Invalid Input"
+                        "Error Adding Patient"
                 );
             }
         });
 
-        // DISCHARGE PATIENT
+        // DISCHARGE
 
         dischargeButton.setOnAction(e -> {
 
@@ -476,47 +463,24 @@ public class Dashboard extends BorderPane {
                     table.getSelectionModel()
                             .getSelectedItem();
 
-            if (selected != null
-                    && selected.getStatus()
-                    .equals("Admitted")) {
-
-                occupiedRooms.remove(
-                        selected.getRoomNumber()
-                );
-
-                selected.setStatus(
-                        "Discharged"
-                );
-
-                selected.setDischargeDate(
-                        LocalDate.now()
-                                .toString()
-                );
-
-                selected.setBillStatus(
-                        "Paid"
-                );
-
-                selected.setFinalBill(
-                        calculateBill(
-                                selected
-                        )
-                );
+            if (selected != null) {
 
                 HospitalService
                         .dischargePatient(
                                 selected
                         );
 
-                patientList.clear();
-
-                patientList.addAll(
+                ObservableList<Patient>
+                        refreshedPatients =
                         HospitalService
-                                .getPatients()
+                                .getPatients();
+
+                table.setItems(
+                        refreshedPatients
                 );
 
                 updateDashboard(
-                        patientList
+                        refreshedPatients
                 );
             }
         });
@@ -526,7 +490,8 @@ public class Dashboard extends BorderPane {
         searchField.textProperty()
                 .addListener((obs, oldVal, newVal) -> {
 
-                    ObservableList<Patient> allPatients =
+                    ObservableList<Patient>
+                            allPatients =
                             HospitalService
                                     .getPatients();
 
@@ -540,12 +505,13 @@ public class Dashboard extends BorderPane {
                                         newVal.toLowerCase()
                                 )) {
 
-                            table.getItems().add(p);
+                            table.getItems()
+                                    .add(p);
                         }
                     }
                 });
 
-        // SIDEBAR ITEMS
+        // SIDEBAR
 
         sidebar.getChildren().addAll(
                 title,
@@ -619,54 +585,7 @@ public class Dashboard extends BorderPane {
         }
     }
 
-    // BILL CALCULATION
-
-    private double calculateBill(
-            Patient patient
-    ) {
-
-        double roomCharge = 0;
-
-        switch (patient.getRoomType()) {
-
-            case "ICU":
-                roomCharge = 12000;
-                break;
-
-            case "Private Room":
-                roomCharge = 5000;
-                break;
-
-            default:
-                roomCharge = 2000;
-        }
-
-        double diseaseCharge = 0;
-
-        switch (patient.getDisease()) {
-
-            case "Heart Disease":
-                diseaseCharge = 25000;
-                break;
-
-            case "Diabetes":
-                diseaseCharge = 12000;
-                break;
-
-            case "Fracture":
-                diseaseCharge = 18000;
-                break;
-
-            default:
-                diseaseCharge = 5000;
-        }
-
-        return roomCharge
-                + diseaseCharge
-                + 3000;
-    }
-
-    // UPDATE DASHBOARD
+    // DASHBOARD UPDATE
 
     private void updateDashboard(
             ObservableList<Patient> patients
@@ -683,7 +602,8 @@ public class Dashboard extends BorderPane {
 
         for (Patient p : patients) {
 
-            if (p.getStatus()
+            if (p.getStatus() != null
+                    && p.getStatus()
                     .equals("Admitted")) {
 
                 occupied++;
